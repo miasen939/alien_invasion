@@ -14,6 +14,14 @@ class Ship():
         #set new ship on the center bottom of screen
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
+        
+        #sign of movment
+        self.moving_right = False
+
+    def update(self):
+        """adjust ships location according to sign"""
+        if self.moving_right:
+            self.rect.centerx += 1
 
     def blitme(self):
         """blit the ship at the pointed position"""
