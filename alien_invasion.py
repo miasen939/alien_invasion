@@ -1,6 +1,7 @@
 import sys
 
 import pygame
+from pygame.sprite import Group 
 
 from settings import Settings
 from ship import Ship
@@ -16,6 +17,8 @@ def run_game():
 
     #create a ship
     ship = Ship(ai_settings, screen)
+    #create a group of bullets
+    bullets = Group()
 
     #set background clolor
     bg_color = (ai_settings.bg_color)
@@ -23,9 +26,10 @@ def run_game():
     #main loop of game
     while True:
 
-        gf.check_events(ship)     
+        gf.check_events(ai_settings, screen, ship, bullets)     
         ship.update()
-        gf.update_screen(ai_settings, screen, ship)
+        gf.update_bullets(bullets)
+        gf.update_screen(ai_settings, screen, ship, bullets)
 
 run_game()
 
